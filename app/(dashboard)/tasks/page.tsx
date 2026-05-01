@@ -2,7 +2,7 @@
 import { useState, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import useSWR from 'swr'
 import toast from 'react-hot-toast'
 import {
@@ -22,7 +22,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import type { Task, TaskStatus, TaskPriority } from '@/components/tasks/KanbanBoard'
 import type { DropResult } from '@hello-pangea/dnd'
 
-const KanbanBoard = dynamic(() => import('@/components/tasks/KanbanBoard'), { ssr: false, loading: () => (
+export const dynamic = 'force-dynamic';
+
+const KanbanBoard = nextDynamic(() => import('@/components/tasks/KanbanBoard'), { ssr: false, loading: () => (
   <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 items-start">
     {Array.from({ length: 3 }).map((_, i) => (
       <div key={i} className="flex flex-col gap-3 min-h-[200px] rounded-2xl p-4 border-t-2 bg-white/[0.02] border-[var(--border-subtle)]">

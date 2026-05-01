@@ -16,6 +16,8 @@ import { Badge } from '@/components/ui/Badge'
 import { formatRelative, stringToColorIndex, PROJECT_GRADIENT_SOLIDS, cn } from '@/lib/utils'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
+export const dynamic = 'force-dynamic';
+
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
 interface Member { _id: string; name: string; email: string; role: string }

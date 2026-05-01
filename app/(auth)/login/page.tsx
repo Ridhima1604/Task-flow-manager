@@ -8,6 +8,8 @@ import { Mail, Lock, AlertCircle, Sparkles, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 
+export const dynamic = 'force-dynamic';
+
 const FEATURES = [
   'Real-time kanban boards',
   'Team collaboration & roles',

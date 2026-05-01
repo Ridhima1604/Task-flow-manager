@@ -10,7 +10,7 @@ import {
   ShieldCheck, Users, FolderKanban, ListTodo, MoreHorizontal,
   Trash2, Activity, CheckCircle2, Clock, Search,
 } from 'lucide-react'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import { Badge } from '@/components/ui/Badge'
 import { Avatar } from '@/components/ui/Avatar'
 import { Button } from '@/components/ui/Button'
@@ -21,8 +21,10 @@ import { StatCard } from '@/components/dashboard/StatCard'
 import * as Tabs from '@radix-ui/react-tabs'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
-const AdminPieChart = dynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminPieChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
-const AdminBarChart = dynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminBarChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
+export const dynamic = 'force-dynamic';
+
+const AdminPieChart = nextDynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminPieChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
+const AdminBarChart = nextDynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminBarChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 

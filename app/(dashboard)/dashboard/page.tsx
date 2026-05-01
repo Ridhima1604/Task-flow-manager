@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import useSWR from 'swr'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 import { format } from 'date-fns'
 import {
   ListTodo, CheckCircle2, Activity, Clock, TrendingUp,
@@ -16,7 +16,9 @@ import { formatDueDate, formatRelative, getGreeting } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { StatCard } from '@/components/dashboard/StatCard'
 
-const ActivityChart = dynamic(() => import('@/components/dashboard/ActivityChart'), { ssr: false, loading: () => <Skeleton className="h-[260px] w-full rounded-xl" /> })
+export const dynamic = 'force-dynamic';
+
+const ActivityChart = nextDynamic(() => import('@/components/dashboard/ActivityChart'), { ssr: false, loading: () => <Skeleton className="h-[260px] w-full rounded-xl" /> })
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
