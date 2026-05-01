@@ -1,11 +1,11 @@
 'use client'
-import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from '@/lib/theme-provider'
 import { Toaster } from 'react-hot-toast'
+import { SafeAuthProvider } from '@/components/auth/SafeAuthProvider'
 
-export function Providers({ children, session }: { children: React.ReactNode, session: any }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <SessionProvider session={session}>
+    <SafeAuthProvider>
       <ThemeProvider>
         {children}
         <Toaster

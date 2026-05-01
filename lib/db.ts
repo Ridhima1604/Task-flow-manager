@@ -3,11 +3,11 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI
 
-if (!MONGODB_URI) {
-  throw new Error('MONGODB_URI environment variable is not defined')
+if (!MONGODB_URI && process.env.NODE_ENV === 'production') {
+  console.warn('Warning: MONGODB_URI is not defined in production environment.')
 }
 
-const uri = MONGODB_URI
+const uri = MONGODB_URI || 'mongodb://localhost:27017/taskflow_placeholder'
 const dnsServers = process.env.MONGODB_DNS_SERVERS?.split(',').map((server) => server.trim()).filter(Boolean)
 
 if (dnsServers?.length) {

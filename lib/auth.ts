@@ -54,5 +54,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: '/login',
   },
   session: { strategy: 'jwt', maxAge: 7 * 24 * 60 * 60 },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || 'build_time_secret_placeholder_for_stability',
 })

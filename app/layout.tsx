@@ -22,13 +22,11 @@ export const metadata: Metadata = {
   description: "The most beautiful way to manage your team's projects and tasks.",
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth()
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${dmSans.variable} font-sans bg-page text-[var(--text-primary)] antialiased`}>
-        <Providers session={session}>
+        <Providers>
           {children}
         </Providers>
       </body>
