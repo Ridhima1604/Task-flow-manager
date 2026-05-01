@@ -1,63 +1,45 @@
-'use client';
-
 import { HTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
 
-type BadgeVariant = 'success' | 'warning' | 'danger' | 'info' | 'primary' | 'muted' | 'admin' | 'member' | 'low' | 'medium' | 'high' | 'active' | 'pending' | 'in-progress' | 'completed';
+export type BadgeVariant = 'success' | 'warning' | 'danger' | 'info' | 'primary' | 'muted' | 'admin' | 'member' | 'low' | 'medium' | 'high' | 'active' | 'pending' | 'in-progress' | 'completed';
 
-interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: BadgeVariant;
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+  variant?: BadgeVariant | string;
   dot?: boolean;
 }
 
-const variantMap: Record<BadgeVariant, { bg: string; color: string }> = {
-  success: { bg: 'var(--accent-success-subtle)', color: 'var(--accent-success)' },
-  warning: { bg: 'var(--accent-warning-subtle)', color: 'var(--accent-warning)' },
-  danger:  { bg: 'var(--accent-danger-subtle)',  color: 'var(--accent-danger)' },
-  info:    { bg: 'var(--accent-info-subtle)',    color: 'var(--accent-info)' },
-  primary: { bg: 'var(--accent-primary-subtle)', color: 'var(--accent-primary)' },
-  muted:   { bg: 'var(--border-subtle)',         color: 'var(--text-secondary)' },
-  admin:   { bg: 'var(--accent-primary-subtle)', color: 'var(--accent-primary)' },
-  member:  { bg: 'var(--border-subtle)',         color: 'var(--text-secondary)' },
-  low:     { bg: 'var(--accent-success-subtle)', color: 'var(--accent-success)' },
-  medium:  { bg: 'var(--accent-warning-subtle)', color: 'var(--accent-warning)' },
-  high:    { bg: 'var(--accent-danger-subtle)',  color: 'var(--accent-danger)' },
-  active:  { bg: 'var(--accent-success-subtle)', color: 'var(--accent-success)' },
-  pending: { bg: 'var(--border-subtle)',         color: 'var(--text-secondary)' },
-  'in-progress': { bg: 'var(--accent-primary-subtle)', color: 'var(--accent-primary)' },
-  completed: { bg: 'var(--accent-success-subtle)', color: 'var(--accent-success)' },
+const variantMap: Record<string, string> = {
+  success: 'bg-[var(--accent-success-subtle)] text-[var(--accent-success)]',
+  warning: 'bg-[var(--accent-warning-subtle)] text-[var(--accent-warning)]',
+  danger: 'bg-[var(--accent-danger-subtle)] text-[var(--accent-danger)]',
+  info: 'bg-[var(--accent-info-subtle)] text-[var(--accent-info)]',
+  primary: 'bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]',
+  muted: 'bg-[var(--border-subtle)] text-[var(--text-secondary)]',
+  admin: 'bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]',
+  member: 'bg-[var(--border-subtle)] text-[var(--text-secondary)]',
+  low: 'bg-[var(--accent-success-subtle)] text-[var(--accent-success)]',
+  medium: 'bg-[var(--accent-warning-subtle)] text-[var(--accent-warning)]',
+  high: 'bg-[var(--accent-danger-subtle)] text-[var(--accent-danger)]',
+  active: 'bg-[var(--accent-success-subtle)] text-[var(--accent-success)]',
+  pending: 'bg-[var(--border-subtle)] text-[var(--text-secondary)]',
+  'in-progress': 'bg-[var(--accent-primary-subtle)] text-[var(--accent-primary)]',
+  completed: 'bg-[var(--accent-success-subtle)] text-[var(--accent-success)]',
 };
 
-export function Badge({ variant = 'muted', children, style, dot, ...props }: BadgeProps) {
-  const { bg, color } = variantMap[variant as BadgeVariant] || variantMap.muted;
+export function Badge({ variant = 'muted', children, className, dot, ...props }: BadgeProps) {
+  const styles = variantMap[variant] || variantMap.muted;
+  
   return (
     <span
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '4px',
-        padding: '2px 9px',
-        borderRadius: '20px',
-        fontSize: '11px',
-        fontWeight: 500,
-        letterSpacing: '0.025em',
-        whiteSpace: 'nowrap',
-        background: bg,
-        color: color,
-        ...style,
-      }}
+      className={cn(
+        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide whitespace-nowrap',
+        styles,
+        className
+      )}
       {...props}
     >
-      {dot && (
-        <span
-          style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: 'currentColor',
-          }}
-        />
-      )}
-      {children || variant.charAt(0).toUpperCase() + variant.slice(1)}
+      {dot && <span className="w-1.5 h-1.5 rounded-full bg-current shrink-0" />}
+      {children || (typeof variant === 'string' ? variant.charAt(0).toUpperCase() + variant.slice(1) : '')}
     </span>
   );
 }

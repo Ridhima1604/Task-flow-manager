@@ -1,145 +1,72 @@
-'use client';
+import { InputHTMLAttributes, TextareaHTMLAttributes, forwardRef } from 'react';
+import { cn } from '@/lib/utils';
 
-import { InputHTMLAttributes, forwardRef } from 'react';
-
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   icon?: React.ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, icon, style, ...props }, ref) => {
+  ({ label, error, icon, className, ...props }, ref) => {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
+      <div className="flex flex-col gap-1.5 w-full">
         {label && (
-          <label
-            style={{
-              fontSize: '12px',
-              fontWeight: 500,
-              color: 'var(--text-secondary)',
-              letterSpacing: '0.02em',
-            }}
-          >
+          <label className="text-xs font-medium text-[var(--text-secondary)] tracking-wide ml-1">
             {label}
           </label>
         )}
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <div className="relative flex items-center group">
           {icon && (
-            <span
-              style={{
-                position: 'absolute',
-                left: '10px',
-                color: 'var(--text-muted)',
-                display: 'flex',
-                alignItems: 'center',
-                pointerEvents: 'none',
-              }}
-            >
+            <span className="absolute left-3.5 text-[var(--text-muted)] group-focus-within:text-[var(--accent-primary)] transition-colors pointer-events-none">
               {icon}
             </span>
           )}
           <input
             ref={ref}
-            style={{
-              width: '100%',
-              padding: icon ? '9px 12px 9px 34px' : '9px 12px',
-              fontSize: '13px',
-              fontFamily: 'inherit',
-              color: 'var(--text-primary)',
-              background: 'var(--bg-input)',
-              border: error
-                ? '1px solid var(--accent-danger)'
-                : '1px solid var(--border-default)',
-              borderRadius: '10px',
-              outline: 'none',
-              transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-              ...style,
-            }}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = error
-                ? 'var(--accent-danger)'
-                : 'var(--accent-primary)';
-              e.currentTarget.style.boxShadow = error
-                ? '0 0 0 3px var(--accent-danger-subtle)'
-                : '0 0 0 3px var(--accent-primary-subtle)';
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = error
-                ? 'var(--accent-danger)'
-                : 'var(--border-default)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
+            className={cn(
+              'w-full bg-[var(--bg-input)] text-sm font-medium text-[var(--text-primary)] outline-none transition-all',
+              'border border-[var(--border-default)] rounded-xl',
+              icon ? 'pl-11 pr-4 py-2.5' : 'px-4 py-2.5',
+              'focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary-subtle)]',
+              error && 'border-[var(--accent-danger)] focus:border-[var(--accent-danger)] focus:ring-[var(--accent-danger-subtle)]',
+              className
+            )}
             {...props}
           />
         </div>
-        {error && (
-          <span style={{ fontSize: '11px', color: 'var(--accent-danger)' }}>{error}</span>
-        )}
+        {error && <span className="text-[11px] font-medium text-[var(--accent-danger)] ml-1">{error}</span>}
       </div>
     );
   }
 );
 
-interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, error, style, ...props }, ref) => {
+  ({ label, error, className, ...props }, ref) => {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%' }}>
+      <div className="flex flex-col gap-1.5 w-full">
         {label && (
-          <label
-            style={{
-              fontSize: '12px',
-              fontWeight: 500,
-              color: 'var(--text-secondary)',
-              letterSpacing: '0.02em',
-            }}
-          >
+          <label className="text-xs font-medium text-[var(--text-secondary)] tracking-wide ml-1">
             {label}
           </label>
         )}
         <textarea
           ref={ref}
-          style={{
-            width: '100%',
-            padding: '9px 12px',
-            fontSize: '13px',
-            fontFamily: 'inherit',
-            color: 'var(--text-primary)',
-            background: 'var(--bg-input)',
-            border: error
-              ? '1px solid var(--accent-danger)'
-              : '1px solid var(--border-default)',
-            borderRadius: '10px',
-            outline: 'none',
-            minHeight: '100px',
-            resize: 'vertical',
-            transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-            ...style,
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.borderColor = error
-              ? 'var(--accent-danger)'
-              : 'var(--accent-primary)';
-            e.currentTarget.style.boxShadow = error
-              ? '0 0 0 3px var(--accent-danger-subtle)'
-              : '0 0 0 3px var(--accent-primary-subtle)';
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.borderColor = error
-              ? 'var(--accent-danger)'
-              : 'var(--border-default)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}
+          className={cn(
+            'w-full bg-[var(--bg-input)] text-sm font-medium text-[var(--text-primary)] outline-none transition-all',
+            'border border-[var(--border-default)] rounded-xl px-4 py-3 min-h-[120px] resize-none',
+            'focus:border-[var(--accent-primary)] focus:ring-4 focus:ring-[var(--accent-primary-subtle)]',
+            error && 'border-[var(--accent-danger)] focus:border-[var(--accent-danger)] focus:ring-[var(--accent-danger-subtle)]',
+            className
+          )}
           {...props}
         />
-        {error && (
-          <span style={{ fontSize: '11px', color: 'var(--accent-danger)' }}>{error}</span>
-        )}
+        {error && <span className="text-[11px] font-medium text-[var(--accent-danger)] ml-1">{error}</span>}
       </div>
     );
   }
@@ -147,4 +74,5 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 Input.displayName = 'Input';
 Textarea.displayName = 'Textarea';
+
 export default Input;
