@@ -8,7 +8,7 @@ import mongoose from 'mongoose'
 
 // Phase 1: DEMO DATA LAYER
 const DEMO_USERS = [
-  { _id: new mongoose.Types.ObjectId(), name: 'Ridhima Sharma', email: 'ridhima@teamtask.io', role: 'admin', rawPassword: 'password123' },
+  { _id: new mongoose.Types.ObjectId(), name: 'Ridhima Pandey', email: 'ridhima@teamtask.io', role: 'admin', rawPassword: 'password123' },
   { _id: new mongoose.Types.ObjectId(), name: 'Aryan Mehta', email: 'aryan@teamtask.io', role: 'member', rawPassword: 'password123' },
   { _id: new mongoose.Types.ObjectId(), name: 'Priya Nair', email: 'priya@teamtask.io', role: 'member', rawPassword: 'password123' },
   { _id: new mongoose.Types.ObjectId(), name: 'Kabir Singh', email: 'kabir@teamtask.io', role: 'member', rawPassword: 'password123' },
