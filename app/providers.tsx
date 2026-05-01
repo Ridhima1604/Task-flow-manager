@@ -1,7 +1,7 @@
 'use client'
-import { ThemeProvider } from '@/lib/theme-provider'
+import { ThemeProvider } from '../lib/theme-provider'
 import { Toaster } from 'react-hot-toast'
-import { SafeAuthProvider } from '@/components/auth/SafeAuthProvider'
+import { SafeAuthProvider } from '../components/auth/SafeAuthProvider'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

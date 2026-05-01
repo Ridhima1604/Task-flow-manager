@@ -1,4 +1,4 @@
-import type { TaskPriority, TaskStatus } from '@/types'
+import type { TaskPriority, TaskStatus } from '../types'
 
 export const STATUSES: TaskStatus[] = ['pending', 'in-progress', 'completed']
 export const PRIORITIES: TaskPriority[] = ['low', 'medium', 'high']

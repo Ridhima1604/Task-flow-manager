@@ -9,22 +9,22 @@ import {
   Plus, Search, MoreHorizontal, Calendar, FolderKanban,
   Pencil, Trash2, X, Filter,
 } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
-import { Avatar } from '@/components/ui/Avatar'
-import { Button } from '@/components/ui/Button'
-import { SkeletonCard } from '@/components/ui/Skeleton'
-import { EmptyState } from '@/components/ui/EmptyState'
-import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
-import { Modal } from '@/components/ui/Modal'
-import { Input, Textarea } from '@/components/ui/Input'
-import { formatDueDate, cn } from '@/lib/utils'
+import { Badge } from '../../../components/ui/Badge'
+import { Avatar } from '../../../components/ui/Avatar'
+import { Button } from '../../../components/ui/Button'
+import { SkeletonCard } from '../../../components/ui/Skeleton'
+import { EmptyState } from '../../../components/ui/EmptyState'
+import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
+import { Modal } from '../../../components/ui/Modal'
+import { Input, Textarea } from '../../../components/ui/Input'
+import { formatDueDate, cn } from '../../../lib/utils'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import type { Task, TaskStatus, TaskPriority } from '@/components/tasks/KanbanBoard'
+import type { Task, TaskStatus, TaskPriority } from '../../../components/tasks/KanbanBoard'
 import type { DropResult } from '@hello-pangea/dnd'
 
 export const dynamic = 'force-dynamic';
 
-const KanbanBoard = nextDynamic(() => import('@/components/tasks/KanbanBoard'), { ssr: false, loading: () => (
+const KanbanBoard = nextDynamic(() => import('../../../components/tasks/KanbanBoard'), { ssr: false, loading: () => (
   <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 items-start">
     {Array.from({ length: 3 }).map((_, i) => (
       <div key={i} className="flex flex-col gap-3 min-h-[200px] rounded-2xl p-4 border-t-2 bg-white/[0.02] border-[var(--border-subtle)]">

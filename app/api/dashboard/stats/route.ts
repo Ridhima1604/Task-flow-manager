@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
 import { startOfDay, subDays } from 'date-fns'
-import { jsonError, requireUser } from '@/lib/api-helpers'
-import { connectDB } from '@/lib/db'
-import { Project } from '@/models/Project'
-import { Task } from '@/models/Task'
-import { User } from '@/models/User'
+import { jsonError, requireUser } from '../../../../lib/api-helpers'
+import { connectDB } from '../../../../lib/db'
+import { Project } from '../../../../models/Project'
+import { Task } from '../../../../models/Task'
+import { User } from '../../../../models/User'
 
 export async function GET() {
   const { error, session } = await requireUser()

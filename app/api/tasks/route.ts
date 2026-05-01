@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { jsonError, requireUser } from '@/lib/api-helpers'
-import { Project } from '@/models/Project'
-import { Task } from '@/models/Task'
-import { PRIORITIES, STATUSES } from '@/lib/constants'
+import { connectDB } from '../../../lib/db'
+import { jsonError, requireUser } from '../../../lib/api-helpers'
+import { Project } from '../../../models/Project'
+import { Task } from '../../../models/Task'
+import { PRIORITIES, STATUSES } from '../../../lib/constants'
 
 export async function GET() {
   const { error, session } = await requireUser()

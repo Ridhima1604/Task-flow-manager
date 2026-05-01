@@ -9,16 +9,16 @@ import {
   ListTodo, CheckCircle2, Activity, Clock, TrendingUp,
   ArrowRight, Calendar, FolderKanban,
 } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
-import { Avatar } from '@/components/ui/Avatar'
-import { SkeletonStatCard, Skeleton } from '@/components/ui/Skeleton'
-import { formatDueDate, formatRelative, getGreeting } from '@/lib/utils'
+import { Badge } from '../../../components/ui/Badge'
+import { Avatar } from '../../../components/ui/Avatar'
+import { SkeletonStatCard, Skeleton } from '../../../components/ui/Skeleton'
+import { formatDueDate, formatRelative, getGreeting } from '../../../lib/utils'
 import { useRouter } from 'next/navigation'
-import { StatCard } from '@/components/dashboard/StatCard'
+import { StatCard } from '../../../components/dashboard/StatCard'
 
 export const dynamic = 'force-dynamic';
 
-const ActivityChart = nextDynamic(() => import('@/components/dashboard/ActivityChart'), { ssr: false, loading: () => <Skeleton className="h-[260px] w-full rounded-xl" /> })
+const ActivityChart = nextDynamic(() => import('../../../components/dashboard/ActivityChart'), { ssr: false, loading: () => <Skeleton className="h-[260px] w-full rounded-xl" /> })
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 

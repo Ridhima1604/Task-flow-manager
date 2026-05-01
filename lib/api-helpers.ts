@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import mongoose from 'mongoose'
-import { auth } from '@/lib/auth'
-import { Project } from '@/models/Project'
-import type { UserRole } from '@/types'
+import { auth } from '../lib/auth'
+import { Project } from '../models/Project'
+import type { UserRole } from '../types'
 
 export function jsonError(error: string, status = 500) {
   return NextResponse.json({ error }, { status })

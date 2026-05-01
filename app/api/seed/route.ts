@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
-import { connectDB } from '@/lib/db'
-import { User } from '@/models/User'
-import { Project } from '@/models/Project'
-import { Task } from '@/models/Task'
+import { connectDB } from '../../../lib/db'
+import { User } from '../../../models/User'
+import { Project } from '../../../models/Project'
+import { Task } from '../../../models/Task'
 import mongoose from 'mongoose'
 
 // Phase 1: DEMO DATA LAYER

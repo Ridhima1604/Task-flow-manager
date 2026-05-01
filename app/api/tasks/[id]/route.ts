@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { jsonError, requireUser, isValidObjectId } from '@/lib/api-helpers'
-import { Task } from '@/models/Task'
-import { Project } from '@/models/Project'
+import { connectDB } from '../../../../lib/db'
+import { jsonError, requireUser, isValidObjectId } from '../../../../lib/api-helpers'
+import { Task } from '../../../../models/Task'
+import { Project } from '../../../../models/Project'
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   const { error, session } = await requireUser('admin')

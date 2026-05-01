@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose'
-import type { TaskPriority, TaskStatus } from '@/types'
+import type { TaskPriority, TaskStatus } from '../types'
 
 export interface ITask extends Document {
   title: string

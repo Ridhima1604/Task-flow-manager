@@ -1,5 +1,5 @@
 'use client'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 const COLORS = [
   ['bg-indigo-500/20 text-indigo-300', 'ring-indigo-500/30'],

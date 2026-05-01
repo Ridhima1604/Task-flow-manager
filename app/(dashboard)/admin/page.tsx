@@ -16,15 +16,15 @@ import { Avatar } from '../../../components/ui/Avatar'
 import { Button } from '../../../components/ui/Button'
 import { SkeletonTableRow, Skeleton } from '../../../components/ui/Skeleton'
 import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
-import { formatRelative, cn } from '@/lib/utils'
-import { StatCard } from '@/components/dashboard/StatCard'
+import { formatRelative, cn } from '../../../lib/utils'
+import { StatCard } from '../../../components/dashboard/StatCard'
 import * as Tabs from '@radix-ui/react-tabs'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 export const dynamic = 'force-dynamic';
 
-const AdminPieChart = nextDynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminPieChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
-const AdminBarChart = nextDynamic(() => import('@/components/dashboard/AdminCharts').then(mod => mod.AdminBarChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
+const AdminPieChart = nextDynamic(() => import('../../../components/dashboard/AdminCharts').then(mod => mod.AdminPieChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
+const AdminBarChart = nextDynamic(() => import('../../../components/dashboard/AdminCharts').then(mod => mod.AdminBarChart), { ssr: false, loading: () => <Skeleton className="h-60 w-full rounded-xl" /> })
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 

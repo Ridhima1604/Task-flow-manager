@@ -1,7 +1,7 @@
 'use client';
 
 import { HTMLAttributes } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export type BadgeVariant = 'success' | 'warning' | 'danger' | 'info' | 'primary' | 'muted' | 'admin' | 'member' | 'low' | 'medium' | 'high' | 'active' | 'pending' | 'in-progress' | 'completed';
 

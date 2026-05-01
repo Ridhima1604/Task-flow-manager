@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { jsonError, requireUser, serializeDoc } from '@/lib/api-helpers'
-import { Project } from '@/models/Project'
-import { Task } from '@/models/Task'
+import { connectDB } from '../../../lib/db'
+import { jsonError, requireUser, serializeDoc } from '../../../lib/api-helpers'
+import { Project } from '../../../models/Project'
+import { Task } from '../../../models/Task'
 
 export async function GET() {
   const { error, session } = await requireUser()

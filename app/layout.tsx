@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, DM_Sans } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import { Providers } from './providers'
-import { auth } from '@/lib/auth'
+import { auth } from '../lib/auth'
 import './globals.css'
 
 const inter = Inter({

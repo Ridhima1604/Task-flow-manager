@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { User } from '@/models/User'
-import { jsonError } from '@/lib/api-helpers'
+import { connectDB } from '../../../../lib/db'
+import { User } from '../../../../models/User'
+import { jsonError } from '../../../../lib/api-helpers'
 
 export async function POST(req: NextRequest) {
   try {

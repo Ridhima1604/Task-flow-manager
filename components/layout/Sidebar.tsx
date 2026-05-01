@@ -9,10 +9,10 @@ import {
   ShieldCheck, LogOut, Menu, X, ChevronRight,
   Bell, Settings, Users, BarChart2
 } from 'lucide-react'
-import { Avatar } from '@/components/ui/Avatar'
-import { Badge } from '@/components/ui/Badge'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
-import { cn } from '@/lib/utils'
+import { Avatar } from '../../components/ui/Avatar'
+import { Badge } from '../../components/ui/Badge'
+import { ThemeToggle } from '../../components/ui/ThemeToggle'
+import { cn } from '../../lib/utils'
 
 const NAV = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },

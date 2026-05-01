@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { jsonError, requireUser, isValidObjectId } from '@/lib/api-helpers'
-import { Task } from '@/models/Task'
-import { Project } from '@/models/Project'
+import { connectDB } from '../../../../../lib/db'
+import { jsonError, requireUser, isValidObjectId } from '../../../../../lib/api-helpers'
+import { Task } from '../../../../../models/Task'
+import { Project } from '../../../../../models/Project'
 
 const VALID_STATUSES = ['pending', 'in-progress', 'completed']
 
