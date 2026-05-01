@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Lock, AlertCircle, Sparkles, CheckCircle2 } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
+import { Button } from '../../../components/ui/Button'
+import { Input } from '../../../components/ui/Input'
 
 export const dynamic = 'force-dynamic';
 
