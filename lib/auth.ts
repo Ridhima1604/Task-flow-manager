@@ -4,7 +4,10 @@ import { connectDB } from '../lib/db'
 import { User } from '../models/User'
 import type { UserRole } from '../types'
 
+import { authConfig } from './auth.config'
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   providers: [
     Credentials({
       name: 'credentials',
@@ -33,26 +36,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id ?? ''
-        token.role = user.role as UserRole
-      }
-      return token
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = String(token.id)
-        session.user.role = token.role as UserRole
-      }
-      return session
-    },
-  },
-  pages: {
-    signIn: '/login',
-    error: '/login',
-  },
-  session: { strategy: 'jwt', maxAge: 7 * 24 * 60 * 60 },
-  secret: process.env.NEXTAUTH_SECRET || 'build_time_secret_placeholder_for_stability',
 })
